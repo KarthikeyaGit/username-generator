@@ -64,32 +64,30 @@ const firstname = [
       return Math.floor(Math.random() * 1000); 
     }
     
-    async function generateUniqueUsername() {
-      try {
-        const jsonData = {
-          firstNames: firstname,
-          lastNames: lastname
-        };
-    
-        const { firstNames, lastNames } = jsonData;
-    
-        if (!firstNames || !lastNames || !Array.isArray(firstNames) || !Array.isArray(lastNames)) {
-          throw new Error('Invalid data format: firstNames or lastNames is not an array or is empty.');
-        }
-    
-        if (firstNames.length === 0 || lastNames.length === 0) {
-          throw new Error('No names available: firstNames or lastNames arrays are empty.');
-        }
-    
-        const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-        const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-        const randomNumber = generateRandomNumber();
-        return `${randomFirstName}-${randomLastName}-${randomNumber}`;
-      } catch (error) {
-        console.error('Error generating random name:', error);
-        throw error;
-      }
+   function generateUniqueUsername() {
+  try {
+
+    let f_length = firstname.length;
+    let l_length = lastname.length;
+
+    if (!firstname || !lastname || !Array.isArray(firstname) || !Array.isArray(lastname)) {
+      throw new Error('Invalid data format: firstname or lastname is not an array or is empty.');
     }
+
+    if (f_length === 0 || l_length === 0) {
+      throw new Error('No names available: firstname or lastname arrays are empty.');
+    }
+
+    const randomFirstName = firstname[Math.floor(Math.random() * f_length)];
+    const randomLastName = lastname[Math.floor(Math.random() * l_length)];
+    const randomNumber = generateRandomNumber();
+    return `${randomFirstName}-${randomLastName}-${randomNumber}`;
+  } catch (error) {
+    console.error('Error generating random name:', error);
+    throw error;
+  }
+}
+
     
     module.exports = generateUniqueUsername;
     
