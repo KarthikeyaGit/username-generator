@@ -27,7 +27,7 @@ const firstname = [
     "Easton", "Harper", "Brody", "Morgan", "Jordan", "Scarlett", "Cole", "Zoe", "Wyatt", "Elena",
     "Jason", "Clara", "Chase", "Taylor", "Alex", "Katherine", "Dominic", "Molly", "Micah", "Paige",
     "Adam", "Eleanor", "Carlos", "Makayla", "Jace", "Bella", "Xander", "Samantha", "Tristan", "Hannah",
-    "Carson", "Alexandra", "Bentley", "Lillian", "Nolan", "Layla", "Max", "Alexis", "Hudson", "Nova","Mateo", "Luna", "Santiago", "Mia", "Leonardo", "Camila", "Daniel", "Valentina", "Benjamin", "Isabella",
+    "Carson", "Alexandra", "Bentley", "Lillian", "Nolan", "Layla", "Max", "Alexis", "Hudson", "Nova", "Mateo", "Luna", "Santiago", "Mia", "Leonardo", "Camila", "Daniel", "Valentina", "Benjamin", "Isabella",
     "Emiliano", "Sofia", "Alexander", "Valeria", "Sebastian", "Luciana", "Matias", "Emma", "Nicolas", "Victoria",
     "Samuel", "Martina", "Diego", "Emily", "Dylan", "Abril", "David", "Daniela", "Oliver", "Antonella",
     "Thiago", "Jimena", "Juan", "Elena", "Gabriel", "Alejandra", "Enzo", "Maria", "Adrian", "Catalina",
@@ -35,10 +35,10 @@ const firstname = [
     "Angel", "Laura", "Emmanuel", "Paula", "Anthony", "Natalia", "Rafael", "Sara", "Mateo", "María",
     "Eduardo", "Juana", "José", "Valentina", "Isaac", "Mariana", "Carlos", "Luisa", "Maximiliano", "Florencia",
     "Manuel", "Gabriela", "Erick", "Ximena", "Hector", "Carmen", "Andres", "Miranda", "Fernando", "Mía"
-  ]
-  
-  
-  const lastname = [
+]
+
+
+const lastname = [
     "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
     "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson",
     "Clark", "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "Hernandez", "King",
@@ -47,7 +47,7 @@ const firstname = [
     "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", "Bailey",
     "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray", "Ramirez",
     "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes", "Ross",
-    "Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington","Gomez", "Gonzales", "Reyes", "Cruz", "Hughes", "Price", "Myers", "Ford", "Hamilton", "Graham",
+    "Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington", "Gomez", "Gonzales", "Reyes", "Cruz", "Hughes", "Price", "Myers", "Ford", "Hamilton", "Graham",
     "Sullivan", "Wallace", "Woods", "Cole", "West", "Jordan", "Owens", "Reynolds", "Fisher", "Ellis",
     "Harrison", "Gibson", "Mcdonald", "Cruz", "Marshall", "Ortiz", "Gomez", "Murray", "Freeman", "Wells",
     "Webb", "Simpson", "Stevens", "Tucker", "Porter", "Hunter", "Hicks", "Crawford", "Henry", "Boyd",
@@ -56,30 +56,34 @@ const firstname = [
     "Chang", "Blake", "Malone", "Wolf", "Horton", "Rojas", "Bender", "Hahn", "Gibbs", "Hobbs",
     "Knight", "Kramer", "Madden", "Harper", "Pittman", "Hayes", "Chung", "Lloyd", "Sharp", "Steele",
     "Thomas", "Hale", "Mcmahon", "Becker", "Baldwin", "Pierce", "Hester", "Chandler", "Mccarthy", "Schmidt"
-  ]
-  
-  
-  
-  function generateRandomNumber() {
-      return Math.floor(Math.random() * 1000); 
-    }
-    
-   function generateUniqueUsername() {
+]
+
+
+
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 1000);
+}
+
+/**
+ * Generates a unique username by combining a random first name, last name, and a random number.
+ * 
+ * @param {string[]} firstname - An array of strings representing first names.
+ * @param {string[]} lastname - An array of strings representing last names.
+ * @returns {string} - A string representing a unique username in the format "firstName-lastName-randomNumber".
+ * @throws {Error} - If firstname or lastname is not an array or is empty.
+ */
+function generateUniqueUsername(firstname, lastname) {
   try {
-
-    let f_length = firstname.length;
-    let l_length = lastname.length;
-
     if (!firstname || !lastname || !Array.isArray(firstname) || !Array.isArray(lastname)) {
       throw new Error('Invalid data format: firstname or lastname is not an array or is empty.');
     }
 
-    if (f_length === 0 || l_length === 0) {
+    if (firstname.length === 0 || lastname.length === 0) {
       throw new Error('No names available: firstname or lastname arrays are empty.');
     }
 
-    const randomFirstName = firstname[Math.floor(Math.random() * f_length)];
-    const randomLastName = lastname[Math.floor(Math.random() * l_length)];
+    const randomFirstName = getRandomElement(firstname);
+    const randomLastName = getRandomElement(lastname);
     const randomNumber = generateRandomNumber();
     return `${randomFirstName}-${randomLastName}-${randomNumber}`;
   } catch (error) {
@@ -88,6 +92,24 @@ const firstname = [
   }
 }
 
-    
-    module.exports = generateUniqueUsername;
-    
+/**
+ * Generates a random number between 100 and 999.
+ * 
+ * @returns {number} - A random number between 100 and 999.
+ */
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 900) + 100;
+}
+
+/**
+ * Returns a random element from the given array.
+ * 
+ * @param {Array} array - The array to get a random element from.
+ * @returns {*} - A random element from the array.
+ */
+function getRandomElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+
+module.exports = generateUniqueUsername;
