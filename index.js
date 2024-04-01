@@ -67,12 +67,10 @@ function generateRandomNumber() {
 /**
  * Generates a unique username by combining a random first name, last name, and a random number.
  * 
- * @param {string[]} firstname - An array of strings representing first names.
- * @param {string[]} lastname - An array of strings representing last names.
  * @returns {string} - A string representing a unique username in the format "firstName-lastName-randomNumber".
  * @throws {Error} - If firstname or lastname is not an array or is empty.
  */
-function generateUniqueUsername(firstname, lastname) {
+function generateUniqueUsername() {
   try {
     if (!firstname || !lastname || !Array.isArray(firstname) || !Array.isArray(lastname)) {
       throw new Error('Invalid data format: firstname or lastname is not an array or is empty.');
