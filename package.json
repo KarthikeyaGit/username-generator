@@ -1,0 +1,23 @@
+{
+  "name": "username-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarthikeyaGit/username-generator.git"
+  },
+  "keywords": [
+    "name-generator",
+    "uid"
+  ],
+  "author": "karthikeya sandineni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarthikeyaGit/username-generator/issues"
+  },
+  "homepage": "https://github.com/KarthikeyaGit/username-generator#readme"
+}
