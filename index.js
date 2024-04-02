@@ -70,7 +70,8 @@ function generateRandomNumber() {
  * @returns {string} - A string representing a unique username in the format "firstName-lastName-randomNumber".
  * @throws {Error} - If firstname or lastname is not an array or is empty.
  */
-function generateUniqueUsername() {
+// generateUniqueUsername
+function gui() {
   try {
     if (!firstname || !lastname || !Array.isArray(firstname) || !Array.isArray(lastname)) {
       throw new Error('Invalid data format: firstname or lastname is not an array or is empty.');
@@ -110,4 +111,4 @@ function getRandomElement(array) {
 }
 
 
-module.exports = generateUniqueUsername;
+module.exports = gui;
